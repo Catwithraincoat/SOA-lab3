@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="deployment.first-service-ejb-1.0-SNAPSHOT.jar" />
+            <module name="javax.enterprise.api" />
+            <module name="javax.inject.api" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure> 

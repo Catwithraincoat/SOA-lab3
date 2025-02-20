@@ -1,0 +1,63 @@
+server:
+  port: 8080
+  ssl:
+    key-store: classpath:keystore.jks
+    key-store-password: changeit
+    key-store-type: JKS
+    key-alias: api-gateway
+    enabled: true
+    protocol: TLS
+    enabled-protocols: TLSv1.2
+
+zuul:
+  routes:
+    test-service:
+      path: /api/**
+      serviceId: test-service
+      strip-prefix: false
+  ssl-hostname-validation-enabled: false
+  sensitive-headers: 
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: true
+  ServerListRefreshInterval: 1000
+
+# Регистрация в Eureka с HTTPS
+eureka:
+  instance:
+    hostname: localhost
+    securePort: ${server.port}
+    securePortEnabled: true
+    nonSecurePortEnabled: false
+    statusPageUrl: https://${eureka.instance.hostname}:${server.port}/actuator/info
+    healthCheckUrl: https://${eureka.instance.hostname}:${server.port}/actuator/health
+    homePageUrl: https://${eureka.instance.hostname}:${server.port}/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["routes", "filters", "health"]
+      base-path: /actuator
+    endpoint:
+      health:
+        show-details: always
+      routes:
+        enabled: true
+      filters:
+        enabled: true
+
+# CORS configuration
+cors:
+  allowed-origins: "*"
+  allowed-methods: "*"
+  allowed-headers: "*"
+  exposed-headers: "*"
+  allow-credentials: true 

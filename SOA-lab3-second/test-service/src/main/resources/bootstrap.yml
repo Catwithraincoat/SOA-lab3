@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: test-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      # Профиль будет добавлен автоматически из spring.profiles.active
+
+# Локальные настройки логирования (до загрузки конфигурации из config-server)
+logging:
+  level:
+    root: INFO
+    com.example.testservice: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+    org.springframework.cloud.config: DEBUG 

@@ -1,0 +1,8 @@
+first-service-app/
+├── pom.xml
+├── first-service-ejb/
+│   ├── pom.xml
+│   └── src/
+└── first-service-web/
+    ├── pom.xml
+    └── src/ 

@@ -1,0 +1,28 @@
+# Общие настройки для всех сервисов
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+
+ribbon:
+  eureka:
+    enabled: true
+  ServerListRefreshInterval: 1000
+  eager-load:
+    enabled: true
+
+# Общие настройки сервисов
+first-service:
+  base-url: https://localhost:8443/first-service/api
+
+# Настройки логирования
+logging:
+  level:
+    com.example.testservice: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+    org.apache.http: DEBUG
+    httpclient.wire: DEBUG 

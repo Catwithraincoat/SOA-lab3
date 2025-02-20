@@ -1,0 +1,3 @@
+<pool-config>
+    <strict-max-pool name="slsb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
+</pool-config> 

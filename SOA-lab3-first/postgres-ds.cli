@@ -1,0 +1,26 @@
+# Connect to WildFly
+connect
+
+# Add PostgreSQL module
+module add --name=org.postgresql --resources=/home/studs/s336892/.m2/repository/org/postgresql/postgresql/42.2.27/postgresql-42.2.27.jar --dependencies=javax.api,javax.transaction.api
+
+# Add PostgreSQL driver
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-class-name=org.postgresql.Driver)
+
+# Add PostgreSQL datasource
+data-source add \
+    --name=PostgresDS \
+    --jndi-name=java:jboss/datasources/PostgresDS \
+    --driver-name=postgresql \
+    --connection-url=jdbc:postgresql://localhost:5432/studs \
+    --user-name=s336892 \
+    --password=hE31gtovwtBKxxTr \
+    --min-pool-size=5 \
+    --max-pool-size=15 \
+    --validate-on-match=true \
+    --background-validation=false \
+    --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker \
+    --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
+
+# Reload the server configuration
+reload 

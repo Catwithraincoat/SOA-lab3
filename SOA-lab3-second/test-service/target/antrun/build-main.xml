@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="/home/kitokato/SOA/SOA-lab3-second/test-service/deploy" />
+    <copy flatten="true" todir="/home/kitokato/SOA/SOA-lab3-second/test-service/deploy">
+      <fileset dir="/home/kitokato/SOA/SOA-lab3-second/test-service">
+        <include name="*/target/*.jar" />
+        <exclude name="*/target/*-sources.jar" />
+        <exclude name="*/target/*-javadoc.jar" />
+      </fileset>
+    </copy>
+  </target>
+</project>

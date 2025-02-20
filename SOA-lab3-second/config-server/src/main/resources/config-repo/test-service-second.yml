@@ -1,0 +1,14 @@
+spring:
+  profiles: second
+server:
+  port: 8182
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${server.port}
+
+ribbon:
+  eureka:
+    enabled: true
+  ServerListRefreshInterval: 1000
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule 
